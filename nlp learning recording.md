@@ -131,6 +131,26 @@ While count-based methods took this idea quite literally, Word2Vec uses it in a 
 
 
 
+**Intuition:**  Why we choose this kind of structure to build the word embedding?
+
+> In fact, we are constructing a dimension reduction method that builds in our insights(distributional hypothesis).
+
+Let's first look at **t-SNE** method:
+
+> http://www.datakit.cn/blog/2017/02/05/t_sne_full.html#
+>
+> https://www.youtube.com/watch?v=NEaUSP4YerM
+
+t-SNE preserves the original data structure by modeling distance to probability distribution.
+
+Word2Vec wants to construct a embedding space structure in a lower dimension.
+
+The structure is actually the **target probability distribution**, instead of just having the original data distribution, in nlp, we can have our target probability distribution using $P(word|text)$ based on the hypothesis.  The way t-SNE calculate the similarity is to use the Gaussian distribution over the Euclidean distance, while Word2Vec uses cosine similarity.
+
+> Weight tying is such a method use the idea kind of like Word2Vec.
+
+
+
 Word2Vec is a model whose parameters are word vectors. These parameters are optimized iteratively for a certain objective. 
 
 The objective forces word vectors to "know" contexts a word can appear in: the vectors are trained to predict possible contexts of the corresponding words. 
@@ -172,9 +192,9 @@ The model explanation:
 
 The reason why we just use the first matrix as the representation of word embedding. 
 
-https://blog.csdn.net/weixin_42279926/article/details/106403211
-
-
+> https://blog.csdn.net/weixin_42279926/article/details/106403211
+>
+> https://stackoverflow.com/questions/29381505/why-does-word2vec-use-2-representations-for-each-word
 
 
 
@@ -192,7 +212,6 @@ Note that the summation over $|V|$ is computationally huge! Any update we do or 
 
 
 <img src="https://lena-voita.github.io/resources/lectures/word_emb/w2v/negative_sampling-min.png" alt="img" style="zoom:80%;" />
-
 
 $$
 J=-\sum_{(w, c) \in D} \log \frac{1}{1+\exp \left(-u_{w}^{T} v_{c}\right)}-\sum_{(w, c) \in \tilde{D}} \log \left(\frac{1}{1+\exp \left(u_{w}^{T} v_{c}\right)}\right)
@@ -346,7 +365,9 @@ A classification model can be either generative or discriminative.
 
 
 
-
+> LSTM
+>
+> https://qr.ae/pvYzh5
 
 
 
@@ -363,6 +384,22 @@ https://datascience.stackexchange.com/questions/104179/is-the-transformer-decode
 https://ruder.io/state-of-transfer-learning-in-nlp/
 
 
+
+> Transformer detailed understanding:
+>
+> https://zhuanlan.zhihu.com/p/454482273
+
+
+
+> What's the role of feed forward network
+>
+> https://medium.com/synapse-dev/understanding-bert-transformer-attention-isnt-all-you-need-5839ebd396db
+>
+> https://www.reddit.com/r/MachineLearning/comments/bnejs3/d_what_does_the_feedforward_neural_network_in/
+>
+> https://vaclavkosar.com/ml/Feed-Forward-Self-Attendion-Key-Value-Memory
+>
+> https://ai.stackexchange.com/a/17997
 
 
 
@@ -391,6 +428,14 @@ https://ruder.io/state-of-transfer-learning-in-nlp/
 > Pytorch Basic
 >
 > https://www.youtube.com/watch?v=x9JiIFvlUwk
+>
+> 
+>
+> tensor.data
+>
+> https://stackoverflow.com/a/68650467/17548344
+>
+> https://blog.csdn.net/qq_27825451/article/details/96837905
 
 
 
@@ -429,8 +474,20 @@ https://ruder.io/state-of-transfer-learning-in-nlp/
 > https://openbayes.com/console/open-tutorials/containers/M10lgtS5Dep
 >
 > https://blog.csdn.net/nlpuser/article/details/88067167
+>
+> 
+>
+> https://zhuanlan.zhihu.com/p/397919716
+>
+> https://zhuanlan.zhihu.com/p/353795265
+>
+> https://pytorch.org/text/stable/vocab.html#vocab
 
 
+
+> Torchtext version problem
+>
+> [(47条消息) ImportError: cannot import name ‘Field‘ from ‘torchtext.data‘, No module named “legacy“_御用厨师的博客-CSDN博客_torchtext.legacy](https://blog.csdn.net/qq_45520647/article/details/124050177)
 
 
 
